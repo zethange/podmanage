@@ -7,7 +7,6 @@ export const ENCODED_KEY = new TextEncoder().encode(KEY);
 
 export async function getSessionData() {
   const encryptedSessionData = cookies().get("session")?.value;
-  console.log(encryptedSessionData);
   if (!encryptedSessionData) return null;
   try {
     const { payload } = await jose.jwtVerify(encryptedSessionData, ENCODED_KEY);
