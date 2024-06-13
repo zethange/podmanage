@@ -3,9 +3,9 @@
 import { eq } from "drizzle-orm";
 import { CreateUserDto, UserDto, db, users } from "~/shared/lib/db";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { DEFAULT_PHRASE } from "~/shared/lib";
+import { sign } from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { KEY } from "~/shared/lib";
 
 export const loginAction = async (
   dto: CreateUserDto
@@ -20,15 +20,14 @@ export const loginAction = async (
 
   userCandidate.password = null;
 
-  const token = jwt.sign(userCandidate, DEFAULT_PHRASE, {
-    expiresIn: 60 * 60 * 24,
-  });
+  const token = sign(userCandidate, KEY, { expiresIn: 60 * 60 * 24 });
 
   cookies().set("session", token, {
     httpOnly: true,
     secure: true,
     maxAge: 60 * 60 * 24, // One day
     path: "/",
+    sameSite: 'lax',
   });
 
   return userCandidate;

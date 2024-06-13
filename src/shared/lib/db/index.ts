@@ -1,9 +1,10 @@
-import { Database } from "bun:sqlite";
-import { drizzle } from "drizzle-orm/bun-sqlite";
+import { drizzle } from "drizzle-orm/libsql";
 import * as schema from "./schema";
-import { migrate } from "drizzle-orm/bun-sqlite/migrator";
+import { migrate } from "drizzle-orm/libsql/migrator";
 
-const sqlite = new Database("/data/podmanage.db", { create: true });
+import { createClient } from "@libsql/client";
+
+const sqlite = createClient({ url: "file:/data/podmanage.db" })
 const db = drizzle(sqlite, { schema });
 console.log("Connected to database");
 

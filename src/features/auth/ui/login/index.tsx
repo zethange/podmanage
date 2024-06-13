@@ -22,8 +22,8 @@ export const LoginForm = () => {
   } = useForm<CreateUserDto>();
 
   const onSubmit = async (dto: CreateUserDto) => {
-    const user = await loginAction(dto);
-    console.log(user);
+    await loginAction(dto);
+    location.replace('/dashboard')
   };
 
   return (

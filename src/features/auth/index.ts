@@ -1,6 +1,6 @@
 export * from "./ui/register";
 export * from "./ui/login";
 export * from "./ui/logout";
-export * from "./model/register";
-export * from "./model/logout";
-export * from "./model/login";
+export { registerAction } from "./model/register";
+export { logoutAction } from "./model/logout";
+export { loginAction } from "./model/login";

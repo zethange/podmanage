@@ -1,16 +1,20 @@
 import { cookies } from "next/headers";
-import jwt from "jsonwebtoken";
 import { UserDto } from "./db";
+import * as jose from "jose";
 
-export const DEFAULT_PHRASE = "0000.0000.0000.0000";
+export const KEY = "0000000000000000";
+export const ENCODED_KEY = new TextEncoder().encode(KEY);
 
 export async function getSessionData() {
   const encryptedSessionData = cookies().get("session")?.value;
+  console.log(encryptedSessionData);
   if (!encryptedSessionData) return null;
   try {
-    const data = jwt.verify(encryptedSessionData, DEFAULT_PHRASE);
-    return data as UserDto;
+    const { payload } = await jose.jwtVerify(encryptedSessionData, ENCODED_KEY);
+
+    return payload as UserDto;
   } catch (e) {
+    console.log(e);
     return null;
   }
 }
