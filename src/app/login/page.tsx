@@ -21,7 +21,7 @@ export default async function () {
         <img
           src="https://podman.io/assets/images/podman-logo-orig-595af17fb326f4b7cadfa3be142bf810.png"
           alt="Podman logo"
-          className="w-"
+          className=""
         />
 
         {userCount == 0 ? <RegisterForm /> : <LoginForm />}

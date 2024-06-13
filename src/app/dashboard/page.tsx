@@ -1,15 +1,13 @@
-import { redirect } from "next/navigation";
-import { Logout, logoutAction } from "~/features/auth";
-import { getSessionData } from "~/shared/lib";
-import { Button } from "~/shared/ui/button";
+'use server'
 
+import { ContainerList } from "~/entities/container";
+import { Logout } from "~/features/auth";
 
 export default async function () {
-
   return (
     <main>
-      <Button type="submit" variant="outline">
-      </Button>
+      <span className="text-3xl text-stone-500">Containers</span>
+      <ContainerList />
       <Logout />
     </main>
   );
