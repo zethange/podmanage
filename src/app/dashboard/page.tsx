@@ -1,14 +1,12 @@
-'use server'
+"use server";
 
 import { ContainerList } from "~/entities/container";
-import { Logout } from "~/features/auth";
 
 export default async function () {
   return (
-    <main>
+    <main className="grid gap-2">
       <span className="text-3xl text-stone-500">Containers</span>
       <ContainerList />
-      <Logout />
     </main>
   );
 }

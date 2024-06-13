@@ -4,7 +4,7 @@ import { Button } from "~/shared/ui/button";
 
 export default (({ children }) => {
   return (
-    <div className="flex h-[100dvh]">
+    <div className="grid grid-cols-[auto_1fr] h-[100dvh]">
       <div className="p-4 border-r max-w-[250px] bg-stone-50">
         <img
           src="https://podman.io/assets/images/podman-logo-orig-595af17fb326f4b7cadfa3be142bf810.png"

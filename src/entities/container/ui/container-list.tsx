@@ -166,8 +166,8 @@ export const ContainerList = () => {
   });
 
   return (
-    <div>
-      <div className="flex items-center py-4">
+    <div className="border rounded-md p-2 grid gap-2">
+      <div className="flex items-center">
         <Input
           placeholder="Filter name..."
           value={(table.getColumn("names")?.getFilterValue() as string) ?? ""}
