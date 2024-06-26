@@ -28,7 +28,7 @@ export default (({ children }) => {
           </Link>
         </div>
       </div>
-      <div className="p-4 w-full">{children}</div>
+      <div className="p-4 w-full max-h-[100dvh] overflow-y-auto">{children}</div>
     </div>
   );
 }) as FC<PropsWithChildren>;
